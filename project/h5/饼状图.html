@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas饼状图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+        }
+
+        #c1 {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<canvas id="c1" width="1200" height="600"></canvas>
+<script>
+    window.onload = function () {
+        var oC = document.querySelector("#c1");
+        var gd = oC.getContext("2d");
+        var arr = [100, 232, 563, 235, 222];
+        var sum = arr.reduce(function (n1,n2) {
+            return n1+n2;
+        });
+        var arr2=[];
+        arr.forEach(function(n){
+            arr2.push(n/sum*360);
+        });
+
+        var x=200;
+        var y=100;
+        var cr=100;
+        var d=0;
+
+        arr2.forEach(function(n){
+            var r=parseInt(Math.random()*256);
+            var g=parseInt(Math.random()*256);
+            var b=parseInt(Math.random()*256);
+            gd.beginPath();
+            gd.moveTo(x,y);
+            gd.arc(x,y,cr,a2d(d),a2d(d+n),false);
+            gd.stroke();
+            gd.closePath();
+            gd.fillStyle='rgb('+r+','+g+','+b+')';
+            gd.fill();
+            d+=n;
+        })
+        function a2d(n){
+            return n*Math.PI/180;
+        }
+
+    }
+</script>
+</body>
+</html>

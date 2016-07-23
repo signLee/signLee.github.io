@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图表</title>
+    <style>
+        body{ background:#000;}
+        #c1{ background:#fff;}
+    </style>
+</head>
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+<script>
+    window.onload=function(){
+        var oC=document.querySelector("#c1");
+        var gd=oC.getContext("2d");
+        var arr=[467,876,454,567,234];
+        var w=oC.width/arr.length;
+        var space=w/4;
+        var iMax=Math.max.apply(null,arr);
+        var arrH=[];
+        for(var i=0;i<arr.length;i++){
+            arrH.push((arr[i]/iMax)*oC.height);
+        }
+        for(var i=0;i<arr.length;i++){
+            var r=rnd(0,256);
+            var g=rnd(0,256);
+            var b=rnd(0,256);
+            gd.fillStyle='rgba('+r+','+g+','+b+',1)';
+            gd.fill();
+            gd.fillRect(i*(w+space),oC.height-arrH[i],w,arrH[i]);
+            gd.strokeRect(i*(w+space),oC.height-arrH[i],w,arrH[i]);
+        }
+        function rnd(n,m){
+            return Math.floor(Math.random()*(m-n)+n);
+        }
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进度条</title>
+    <style>
+        body {
+            background: #000;
+        }
+
+        #c1 {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+<script>
+    window.onload = function () {
+       var oC=document.querySelector("#c1");
+        var gd=oC.getContext("2d");
+        var x=200;
+        var y=200;
+        var r=100;
+        var f=40;
+        gd.lineWidth="20";
+        gd.font=f+"px songti";
+        gd.fillStyle='red';
+        var i=0;
+        var timer=setInterval(function(){
+            drawArc(x,y,r,0,i++);
+            var str=parseInt((i/360)*100)+'%';
+            var w=gd.measureText(str).width;
+            gd.strokeStyle='rgb('+i/360*255+',0,0)';
+            gd.fillText(str,x-w/2,y+f/2)
+
+            if(i>360){
+                clearInterval(timer);
+            }
+        },16);
+
+        function a2d(n){
+            return n*Math.PI/180;
+        }
+        function drawArc(x,y,r,s,e){
+            s-=90;
+            e-=90;
+            gd.clearRect(0,0,oC.width,oC.height);
+            gd.beginPath();
+            gd.arc(x,y,r,a2d(s),a2d(e),false);
+            gd.stroke();
+        }
+    }
+</script>
+</body>
+</html>

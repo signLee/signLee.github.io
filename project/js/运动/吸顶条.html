@@ -1,0 +1,212 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>吸顶条</title>
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+#div1{width:100%;height:0px;background:red;left:0;top:0; opacity:0}
+#div2{width:100%;height:0px;display:none;}
+</style>
+<script src="move8.js"></script>
+<script>
+window.onload=function(){
+	var oDiv1=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+	var divTop=oDiv1.offsetTop;	
+	var ready=true;
+	window.onscroll=function(){
+		var scrTop=document.documentElement.scrollTop||document.body.scrollTop;
+		if(scrTop>=divTop){
+			if (!ready) {return};
+			ready=false;
+			oDiv1.style.position='fixed';
+			oDiv2.style.display='block';
+			move(oDiv1,{opacity:1,height:40},{time:300});
+			move(oDiv2,{opacity:0.1,height:40},{time:3});
+		}else{
+			oDiv2.style.display='none';
+			move(oDiv1,{opacity:0,height:0},{time:300});
+			ready=true;
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>1111111</p>
+<div id="div1"></div>
+<div id="div2"></div>
+<p>2222222222</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+<p>xxx</p>
+</body>
+</html>

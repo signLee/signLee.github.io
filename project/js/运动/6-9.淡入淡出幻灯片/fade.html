@@ -1,0 +1,59 @@
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>幻灯片淡入淡出</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script src="move4.js"></script>
+<script>
+window.onload=function(){
+	var oPlay=document.getElementById('play');
+	var aHead=oPlay.children[0].children[0].children;
+	var aContent=oPlay.children[0].children[1].children;
+	var zIndex=1;	
+	for(var i=0;i<aHead.length;i++){
+		(function(index){
+			aHead[i].onclick=function(){
+				for(var i=0;i<aHead.length;i++){
+					aHead[i].className='';
+					//aContent[i].style.opacity=0;
+					//aContent[i].style.filter='alpha(opacity:0)';
+					move(aContent[i],'opacity',0,1000);
+				}
+				this.className='active';
+				aContent[index].style.zIndex=zIndex++;
+				//aContent[index].style.opacity=1;
+				//aContent[index].style.filter='alpha(opacity:1)';
+				move(aContent[index],'opacity',1,1000);
+			};	
+		})(i);
+	}
+};
+</script>
+</head>
+
+<body>
+
+<div id="play">
+	<div class="packet"><!-- 为了消除offsetXXX的兼容性问题 -->
+	    <ol>
+	    	<li class="active">0</li>
+	        <li>1</li>
+	        <li>2</li>
+	        <li>3</li>
+	        <li>4</li>
+	    </ol>
+		<ul>
+			<li style="opacity:1; filter:alpha(opacity:100);"><a href="http://www.zhinengshe.com/0"><img src="images/1.jpg" alt="广告一" /></a></li>
+			<li><a href="http://www.zhinengshe.com/1"><img src="images/2.jpg" alt="广告二" /></a></li>
+			<li><a href="http://www.zhinengshe.com/2"><img src="images/3.jpg" alt="广告三" /></a></li>
+			<li><a href="http://www.zhinengshe.com/3"><img src="images/4.jpg" alt="广告四" /></a></li>
+			<li><a href="http://www.zhinengshe.com/4"><img src="images/5.jpg" alt="广告五" /></a></li>
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

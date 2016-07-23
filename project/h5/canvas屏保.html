@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        body {
+            background: #000;
+        }
+
+        #c1 {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="c1" width="800" height="800"></canvas>
+<script>
+    window.onload = function () {
+        var oC = document.querySelector("#c1");
+        var gd = oC.getContext("2d");
+        var winW = document.documentElement.clientWidth;
+        var winH = document.documentElement.clientHeight;
+        oC.width = winW;
+        oC.height = winH;
+        var N = 5;
+        var aPoint = [];
+        for (var i = 0; i < N; i++) {
+            aPoint.push({
+                x: rnd(0, winW),
+                y: rnd(0, winH),
+                w: 1,
+                h: 1,
+                speedX: rnd(-10, 10),
+                speedY: rnd(-10, 10)
+            })
+        }
+        var oldPoint=[];
+        setInterval(function(){
+            gd.clearRect(0,0,oC.width,oC.height);
+            for(var i=0;i<N;i++){
+                drawPoint(aPoint[i]);
+                aPoint[i].x+=aPoint[i].speedX;
+                aPoint[i].y+=aPoint[i].speedY;
+                if(aPoint[i].x<0){
+                    aPoint[i].speedX*=-1;
+                }else if(aPoint[i].x>winW){
+                    aPoint[i].speedX*=-1;
+                }
+                if(aPoint[i].y<0){
+                    aPoint[i].speedY*=-1;
+                }else if(aPoint[i].y>winH){
+                    aPoint[i].speedY*=-1;
+                }
+            }
+            gd.beginPath();
+            gd.strokeStyle="red";
+            gd.moveTo(aPoint[0].x,aPoint[0].y);
+            for(var i=1;i<N;i++){
+                gd.lineTo(aPoint[i].x,aPoint[i].y);
+            }
+            gd.closePath();
+            gd.stroke();
+            var arr=[];
+            for(var i=0;i<N;i++){
+                arr.push({x:aPoint[i].x,y:aPoint[i].y});
+            }
+            oldPoint.push(arr);
+            while (oldPoint.length>20){
+                oldPoint.shift();
+            }
+            for(var i=0;i<oldPoint.length;i++){
+                gd.beginPath();
+                gd.moveTo(oldPoint[i][0].x,oldPoint[i][0].y);
+                for(var j=1;j<N;j++){
+                    gd.lineTo(oldPoint[i][j].x,oldPoint[i][j].y);
+                }
+                var op=i/oldPoint.length;
+                gd.strokeStyle='rgba(255,0,0,'+op+')';
+                gd.closePath();
+                gd.stroke();
+            }
+        },30);
+        function drawPoint(p) {
+            gd.fillStyle = 'red';
+            gd.fillRect(p.x, p.y, p.w, p.h);
+            gd.strokeRect(p.x, p.y, p.w, p.h);
+        }
+
+        function rnd(n, m) {
+            return Math.floor(Math.random() * (m - n) + n);
+        }
+
+    }
+</script>
+</body>
+</html>

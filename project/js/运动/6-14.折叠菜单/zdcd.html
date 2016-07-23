@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>折叠菜单</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="move7.js"></script>
+<script>
+window.onload=function(){
+	var oNav=document.getElementById('nav');
+	var aLi=oNav.children;
+	var aUl=oNav.getElementsByTagName('ul');
+	var aH2=oNav.getElementsByTagName('h2');
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i;
+		aLi[i].onclick=function(){
+			
+			if(aH2[this.index].className){
+				move(aUl[this.index],{height:0});
+				aH2[this.index].className='';
+			}else{
+				for(var i=0;i<aLi.length;i++){
+					aH2[i].className='';
+					move(aUl[i],{height:0});		
+				}
+				aH2[this.index].className='active';
+				var h=aUl[this.index].children.length*24;
+				move(aUl[this.index],{height:h});	
+			}
+		};	
+	}
+};
+</script>
+</head>
+
+<body>
+
+<ul id="nav" class="nav">
+	<li>
+    	<h2><span>智能首页</span></h2>
+        <ul>
+            <li><a href="#">网站介绍</a></li>
+            <li><a href="#">精品套餐</a></li>
+            <li><a href="#">智能特色</a></li>
+            <li><a href="#">免费试听</a></li>
+            <li><a href="#">网站介绍</a></li>
+            <li><a href="#">精品套餐</a></li>
+            <li><a href="#">智能特色</a></li>
+            <li><a href="#">免费试听</a></li>
+        </ul>
+    </li>
+	<li>
+    	<h2><span>智能首页</span></h2>
+        <ul>
+            <li><a href="#">网站介绍</a></li>
+            <li><a href="#">精品套餐</a></li>
+        </ul>
+    </li>
+	<li>
+    	<h2><span>智能首页</span></h2>
+        <ul>
+            <li><a href="#">网站介绍</a></li>
+            <li><a href="#">精品套餐</a></li>
+            <li><a href="#">智能特色</a></li>
+            <li><a href="#">免费试听</a></li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

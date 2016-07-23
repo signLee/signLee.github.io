@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>爆炸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        #box {
+            width: 700px;
+            height: 400px;
+            margin: 50px auto;
+            position: relative;
+            background: url("img/2.jpg");
+            cursor: pointer;
+        }
+
+        #box span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url("img/1.jpg");
+            -webkit-transform: perspective(800px) translate(0, 0) rotateX(0deg) rotateY(0deg) scale(1, 1);
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    window.onload = function () {
+        var oDiv = document.querySelector("#box");
+        var r = 4;//行
+        var c = 7;
+        for (var i = 0; i < r; i++) {
+            for (var j = 0; j < c; j++) {
+                var oSpan = document.createElement("span");
+                oSpan.style.width = oDiv.offsetWidth / c + 'px';
+                oSpan.style.height = oDiv.offsetHeight / r + 'px';
+                oDiv.appendChild(oSpan);
+                oSpan.style.left = oSpan.offsetWidth * j + 'px';
+                oSpan.style.top = oSpan.offsetHeight * i + 'px';
+                oSpan.style.backgroundPosition = -oSpan.offsetLeft + 'px ' + -oSpan.offsetTop + 'px';
+            }
+        }
+
+        var aS = document.querySelectorAll("#box span");
+        var now=0;
+        var bOk=false;
+        oDiv.onclick = function () {
+            if(bOk)return;
+            bOk=true;
+            now++;
+            for (var i = 0; i < aS.length; i++) {
+                var x = (aS[i].offsetLeft + aS[i].offsetWidth / 2) - oDiv.offsetWidth / 2 + 'px';
+                var y = (aS[i].offsetTop + aS[i].offsetHeight / 2) - oDiv.offsetHeight / 2 + 'px';
+                aS[i].style.webkitTransition = '1s all ease';
+                aS[i].style.webkitTransform = 'perspective(800px) translate(' + x + ', ' + y + ') rotateX(' + rnd(0, 360) + 'deg) rotateY(' + rnd(0, 360) + 'deg) scale(' + rnd(0, 3) + ', ' + rnd(0, 3) + ')';
+                aS[i].style.opacity = '0';
+            }
+            function tranEnd() {
+                aS[aS.length - 1].addEventListener('transitionend', tranEnd, false);
+                for (var i = 0; i < aS.length; i++) {
+                    aS[i].style.webkitTransition = 'none';
+                    aS[i].style.backgroundImage=' url("img/'+(now%3+1)+'.jpg")';
+                    oDiv.style.backgroundImage='url("img/'+((now+1)%3+1)+'.jpg")';
+                    aS[i].style.webkitTransform = 'perspective(800px) translate(0, 0) rotateX(0deg) rotateY(0deg) scale(1, 1)';
+                    aS[i].style.opacity = '1';
+                    bOk=false;
+                }
+            }
+
+            aS[aS.length - 1].addEventListener('transitionend', tranEnd, false);
+
+        }
+
+        function rnd(n, m) {
+            return parseInt(Math.random() * (m - n) + n);
+        }
+    }
+</script>
+</body>
+</html>

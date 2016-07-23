@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: "微软雅黑", "张海山锐线体简"
+        }
+
+        #ul1 {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            position: relative;
+            -webkit-transform-style: preserve-3d;
+
+        }
+
+        #ul1 li {
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            font: bold 30px/200px "微软雅黑";
+            text-align: center;
+            box-shadow:inset 0 0  20px #fff,2px 2px 4px #000;
+            opacity: 0;
+            -webkit-transition: 0.4s all ease;
+            -webkit-transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+            left: 0;
+            top: 0;
+            background: #ccc;
+        }
+
+        #ul1 li.cur {
+            opacity: 1;
+            z-index: 5;
+
+        }
+
+        #ul1 li.l1 {
+            z-index: 4;
+            opacity: 0.8;
+            -webkit-transform: perspective(800px) translate(-150px, 0) rotateY(45deg);
+        }
+
+        #ul1 li.l2 {
+            z-index: 3;
+            opacity: 0;
+            -webkit-transform: perspective(800px) translate(-200px, 0) rotateY(45deg);
+        }
+
+        #ul1 li.r1 {
+            z-index: 4;
+            opacity: 0.8;
+            -webkit-transform: perspective(800px) translate(150px, 0) rotateY(-45deg);
+        }
+
+        #ul1 li.r2 {
+            z-index: 4;
+            opacity: 0;
+            -webkit-transform: perspective(800px) translate(200px, 0) rotateY(-45deg);
+        }
+
+        p {
+            width: 50px;
+            height: 40px;
+            position: absolute;
+            background: #a7dbd8;
+            text-align: center;
+            font: bold 30px/40px "微软雅黑";
+        }
+
+        p.prev {
+            left: 200px;
+            top: 50px;
+        }
+
+        p.next {
+            left: 260px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+<p class="prev">&lt;</p>
+<p class="next">&gt;</p>
+<ul id="ul1">
+    <li class="l2"></li>
+    <li class="l1"></li>
+    <li class="cur"></li>
+    <li class="r1"></li>
+    <li class="r2"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    window.onload = function () {
+        var oPre = document.querySelector(".prev");
+        var oNext = document.querySelector(".next");
+        var oUl = document.querySelector("#ul1");
+        var aLi = oUl.children;
+
+        var oSclass = [];
+        var bOk=false;
+        for (var i = 0; i < aLi.length; i++) {
+            oSclass.push(aLi[i].className);
+            aLi[i].style.background='url(img2/'+parseInt(i+1)+'.jpg)';
+            aLi[i].style.backgroundSize="100% 100%";
+        }
+        oPre.onclick = function () {
+            if(bOk)return;
+            bOk=true;
+            oSclass.push(oSclass.shift());
+            tab();
+        }
+        oNext.onclick = function () {
+            if(bOk)return;
+            bOk=true;
+            oSclass.unshift(oSclass.pop());
+            tab();
+        }
+        function tab() {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = oSclass[i];
+            }
+            var oCur=document.querySelector(".cur");
+            function transEnd(){
+                oCur.removeEventListener('transitionend',transEnd,false);
+                bOk=false;
+
+            }
+            oCur.addEventListener('transitionend',transEnd,false);
+        }
+
+    }
+</script>
+</body>
+</html>

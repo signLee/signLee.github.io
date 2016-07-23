@@ -1,0 +1,281 @@
+@charset "utf-8"; 
+/* CSS Document */ 
+.wrap{width:1000px; margin:0 auto;}
+.wrap a:hover{color:red;}
+/*登录条开始*/ 
+.loginbar{height: 30px;position:fixed;top: 0;z-index: 2;opacity: 1;}
+.loginbar a{float: left;font: 14px "宋体";color: #dedede;margin-right: 10px;}
+.loginbar p{margin-top: 8px;}
+.search-text{height: 28px;width: 220px;border: 1px solid #bebebe;border-right: none;padding-left: 5px;margin-left: 263px;opacity:1;}
+.search-btn{height: 30px; width: 90px;background: url(../img/souquanwang-btn.png) no-repeat; cursor:pointer;margin-right: 38px;}
+.up-file{position: relative;}
+.down-file{position: relative;}
+.up-icon{width: 14px;height: 11px;background: url(../img/icon-list.png) no-repeat 0 0 ;}
+.up-file-text{padding:0 6px 0 3px;}
+.load-more{width: 9px;height:7px;background: url(../img/icon-list.png) no-repeat 0 -19px;margin-top: 5px;}
+.point,.point1{position: absolute;top:-5px;right:10px;width: 7px;height: 7px;background:#f45910;border-radius: 50%;}
+.point1{position: absolute;top: -5px;right:-6px;}
+/* 登录条结束*/ 
+/*头部开始*/ 
+.head{position: relative;width: 1000px;height: 410px;}
+.head img{width: 1500px;height: 410px;margin:0 auto;margin-left: -250px;}
+.sidebar{width:235px;height:364px;background:url(../img/site-focuslist_bg.png) no-repeat 0 0 ;position: absolute;top:38px;right: 10px;}
+.sidebar li{height: 35px;width: 197px;padding:0 0 0 16px;}
+.sidebar li:hover{background: #75b200;}
+.sidebar ol{margin:15px 0 0 15px ;overflow: hidden;width: 219px;}
+.sidebar li a{font: 14px/35px "微软雅黑"; color: #dddddd;}
+/*头部结束*/
+.nav{width: 1000px;background:#000;height: 106px;overflow: hidden;}
+.nav a{font: 12px/24px "微软雅黑";color: #ccc; display: block;}
+.nav-list{width: 971px;height: 81px;border: 1px solid #75b200;border-radius: 5px;margin:8px 9px 7px 10px;padding-top: 8px;overflow:hidden;}
+.list1-left{width: 110px;margin:10px 22px 0 17px;} 
+.list1-left h1{width: 110px;height:56px;}
+.list1-left h1 a{text-indent:-9999em;height: 58px;background: url(../img/aqylogo.png) no-repeat;width:110px;display: block;}
+.list1-right{width: 28px;margin:0 15px 0 0 ;}
+.list-line{width: 1px;height: 99px;background: url(../img/nav-line.png) no-repeat 0 0 ;margin-top:-16px;}
+.list2-left{width:42px;margin:0px 6px 0 13px;}
+.list2-right{margin-right:12px;width: 42px;}
+.list3-left{width:28px;margin:0px 11px 0 12px;}
+.list3-right{margin-right:12px;width: 28px;}
+.list4-left{width:28px;margin:0px 13px 0 14px;}
+.list4-right{margin-right:12px;width: 28px;}
+.list5-left{width:28px;margin:0px 21px 0 12px;}
+.list5-right{margin-right:12px;width: 42px;}
+.list6-left{width:70px;margin:0px 15px 0 11px;}
+.list6-right{margin-right:12px;width:72px;}
+.list7-left{width:70px;margin:0px 15px 0 14px;}
+.list7-right{margin-right:20px;width:56px;}
+.shop,.person{position: relative;}
+.list7 .point{right: 0;top:0;}
+.list7 .point{right: 0;top:0;}
+/*导航结束*/
+/*热点开始*/
+.hot{padding: 25px 10px 0 8px ;}
+.hot-left{width: 382px;margin-right: 19px;}
+.hot-left h3 {border-bottom: 2px solid #85ba4d;padding-bottom: 10px;}
+.hot-left h3 span{ font: 24px "微软雅黑"; color: #699f00;}
+.hot-left h3 b{color: #699f00; font-size: 14px;margin-right: 163px;}
+.hot-left h3 i{padding: 4px 5px 4px 28px;background: url(../img/dubo.png) no-repeat 7px 3px;border: 1px solid #d2d2d2;border-radius:8px;font-weight: normal;}
+.hot-left dl{margin-bottom: 10px}
+.hot-left dt{ font:20px "微软雅黑";margin: 22px 0 18px 21px; color: #333333;}
+.hot-left dd{font: 14px "微软雅黑"; line-height: 32px;}
+.hot-left span{padding-left: 10px;}
+.hot-left span a{color:#5d5d5d;}
+.hot-left dd i{padding:7px;background: url(../img/icon-list.png) no-repeat 0 -58px;margin-left: 1px;}
+.hot-leftB div{width: 180px;margin-right: 20px;}
+.hot-leftB div:last-child{margin: 0;}
+.hot-leftB img{height: 101px;}
+.hot-leftB p{background: #f2f2f2;height: 35px;text-align: center;}
+.hot-leftB p{font: 14px/35px "微软雅黑"; color: #595959;}
+.hot-cen{margin-right: 20px;width: 380px}
+.hot-cenT{margin-bottom: 15px;}
+.hot-cenT  a{position: relative;}
+.hot-cenT img{width: 380px;height: 252px;}
+.hot-cenT .hot-cenT-bg{background:#000;opacity: 0.5;height: 41px;width:380px;position: absolute;left: 0;bottom: 0;}
+.hot-cenT .hot-cenT-text{font: 16px/41px "微软雅黑";height: 41px;width:380px;color: #fff;position: absolute;left: 0;bottom: 0;padding-left: 50px;}
+.hot-cenT i{width: 32px;height: 27px;background: url(../img/icon-list.png) no-repeat 0 -100px; position: absolute;left:7px;bottom: 6px;}
+.hot-cenB li{font: 16px/34px "微软雅黑";height: 34px;padding-left: 18px;background: url(../img/icon-list.png) no-repeat 0 -54px;}
+.hot-right{width: 180px;}
+.hot-right li{margin-bottom: 15px;}
+.hot-right li:last-child{margin:0;}
+.hot-right img{width:180px;height: 101px;}
+.hot-right div{width: 180px; text-align:center;height: 35px;font: 14px/35px "微软雅黑";background: #f2f2f2;}
+/*热点结束*/
+/*主体开始*/
+/*综艺开始*/
+.main{padding:0 10px;}
+.variety{width: 780px;}
+.variety-list{margin-top:25px;}
+.title {padding: 48px 0 10px; border-bottom: 2px solid #8ac024;}
+.title b {font: 28px/1 "微软雅黑";padding:0 8px 0 17px; color: #76a626;background: url(../img/icon-list.png) no-repeat 0 -151px;}
+.title span{font: 14px/28px "微软雅黑"; color: #76a626;height: 28px;}
+.title p{height: 28px;font: 14px/28px "微软雅黑";height: 28px;margin-left: 35px;}
+.title p a{color: #333333;padding-right: 24px;background: url(../img/xiegang.png) no-repeat 100% 50%;}
+.title .queshi{width: 52px;height: 20px;background:url(../img/icon-big.png) no-repeat 0 0 ;}
+.title .erke{width: 39px;height: 20px;background: url(../img/icon-big.png) no-repeat 0 -49px; margin-right: 7px;}
+.variety-left{width: 380px;margin-right: 20px;}
+.veriety-lT{position: relative;}
+.veriety-lT .today{width: 125px;height: 45px;background: url(../img/icon-today.png) no-repeat;position: absolute;left: 0;top: 0;}
+.dubo{width: 39px;height: 39px;background:url(../img/icon-list.png) 0 -209px;}
+.veriety-lT .dubo{position: absolute;top: 0;right: 0;}
+.veriety-lTbg{background:#000;opacity: 0.4;width: 54px;height: 16px;text-align: center;}
+.veriety-lT .veriety-lTbg{position: absolute;bottom:4px;right: 4px;}
+.veriety-lTtex{color: #fff;text-align: center;width: 54px;}
+.veriety-lT .veriety-lTtex{position: absolute;bottom:4px;right: 4px;}
+.qixi{width: 42px;height: 16px;background: url(../img/icon-big.png) no-repeat 0 -83px;}
+.veriety-lT .qixi{position: absolute;left: 4;bottom: 4px;}
+.veriety-lc{font: 14px "微软雅黑";padding:11px 0 8px 7px;}
+.veriety-lc a {color: #333;}
+.veriety-lb{padding: 0 0 12px 7px;font: 12px "宋体";}
+.veriety-lb a{color: #999;}
+.variety-cen{width: 180px; margin-right: 20px;}
+.variety-cen-top{position: relative;}
+.variety-cen-top .dubo{position: absolute;top: 0;right: 0;}
+.variety-cen-top .veriety-lTbg{position: absolute;bottom:4px;right: 4px;}
+.variety-cen-top .veriety-lTtex{position: absolute;bottom:4px;right: 4px;}
+.variety-cen-top .qixi{position: absolute;left: 4px;bottom: 4px;}
+.recom{margin-left: 18px;width: 180px;}
+.recom-top{font: 14px/37px "微软雅黑";margin-top: 25px;}
+.recom-top img{height: 101px;}
+.recom-top p {height: 37px;width: 180px;text-align: center;border-bottom: 1px dashed #ccc; background: #f2f2f2;}
+.recom-top p a{color: #333;}
+.recom-bom{background: #f2f2f2;padding: 4px 5px 13px 10px;}
+.recom-bom li{font:14px/34px "微软雅黑";padding-left: 12px;background: url(../img/icon-list.png) no-repeat 0 -263px;}
+.recom-bom li a{color:#8a8a8a;}
+/*综艺结束*/
+/*跑男开始*/
+.run-title{padding:22px 0 11px 1px;width: 100%;border-bottom: 1px solid #e1e1e1;}
+.run-title b{font: 22px "微软雅黑";color: #699f00;}
+.run-title i{width: 33px;height: 19px;background: url(../img/icon-list.png) no-repeat 0 -297px;margin:6px 12px 0 5px;}
+.run-title span{font: 14px/29px "微软雅黑";color: #699f00; }
+.run-list{padding-top: 17px;}
+.run-list li{width: 180px;margin-right: 20px;}
+.run-list li:last-child{margin-right: 0;}
+.run-list-pic{position: relative;}
+.run-list-pic img{width: 180px;height: 101px;}
+.run-list-pic .dubo{position: absolute;right: -180px;top:-101px;}
+.run-list-pic .veriety-lTbg{position: absolute;right:-176px;bottom: 4px;}
+.run-list-pic .veriety-lTtex{position: absolute;right: -176px;bottom: 4px;}
+.run-list .qixi{position: absolute;left: 4px;bottom: 4px;}
+.run-list p{font: 12px "微软雅黑";height:33px;background: #f2f2f2;padding: 6px 12px 10px 4px;}
+.run-list p span{color:#699f00;padding: 3px;border: 1px solid #cfcfcf;}
+.run-list p a{color:#333;font-size: 14px;line-height: 20px;}
+/*跑男结束*/
+/*广告1开始*/
+.banner1{margin-top: 50px;}
+.banner1 img{width: 980px;height: 100px;}
+/*广告1结束*/
+/*娱乐开始*/
+.etm p{position: relative;}
+.etm .report{position: absolute;right:-279px;top:-7px;width:179px;height: 43px;background: url(../img/report.png) no-repeat;}
+.etm .variety-cen .veriety-lb{height: 46px;padding: 11px 7px 9px 10px;background: #f2f2f2;}
+.etm .variety-right .veriety-lb{height: 46px;padding: 11px 7px 9px 10px;background: #f2f2f2;width: 163px;}
+.etm .variety-right{margin-right: 20px;}
+.etm .variety-right1{margin-right: 0;}
+/*娱乐结束*/
+/*猜你喜欢开始*/
+.vido-list{padding-top:25px;}
+.vido-list li{width: 180px;margin-right: 20px;}
+.vido-list li:last-child{margin-right: 0;}
+.vido-listT{margin-bottom: 15px}
+.vido-listT:last-child{margin-bottom:0px}
+.vido-listTlast{margin-bottom: 0;background: #76b300;width: 180px;height: 155px;line-height: 155px;text-align: center;}
+.vido-list img{width: 180px;height: 101px;}
+.vido-list .vido-list-pic{position: relative; display: block;}
+.vido-list .vido-list-pic .dubo{position: absolute;top: 0;right: 0;}
+.vido-list .vido-list-pic .veriety-lTbg{position:absolute;right: 4px;bottom: 4px;}
+.vido-list .vido-list-pic .veriety-lTtex{position:absolute;right: 4px;bottom: 4px;}
+.vido-list .vido-list-pic .qixi{position:absolute;left: 4px;bottom: 4px;}
+.vido-list .vido-list-pic .free{position: absolute;top: 4px;left: 4px;width: 34px;height: 17px;background: url(../img/icon-list.png) no-repeat 0 -367px;}
+.vido-list .vido-list-pic .vip{width: 34px; height: 17px;background: url(../img/icon-list.png) no-repeat 0 -335px;position: absolute;top: 4px;left: 4px;}
+.vido-listTB{height:35px;background: #f2f2f2;padding: 10px 0 9px 6px;}
+.vido-list span {font-size: 14px;line-height: 22px;}
+.vido-list span a{color: #333333;}
+.vido-list p{font-size: 14px;color: #b0b0b0;}
+/*猜你喜欢结束*/
+/*广告2开始*/
+.banner2{margin-top: 62px;position:relative;}
+.banner2-list{width: 928px;height:141px;border:2px solid #8ac024;padding: 9px 26px;}
+.banner2:hover .banner-pre,.banner2:hover .banner-next{display: block;}
+.banner2-list li{margin-right: 19px;}
+.banner2-list li:last-child{margin-right: 0;}
+.banner-pre{position:absolute;left:4px;top: 64px;width: 15px;height: 28px;background: url(../img/icon-list2.png) no-repeat 0 0 ;display: none;}
+.banner-next{position:absolute;right:20px;top: 64px;width: 15px;height: 28px;background: url(../img/icon-list2.png) no-repeat 0 -54px ;display:none;}
+.banner2-text{position:absolute;top:-22px;left: 0px;width:84px;height:22px;background: #8ac024;border-radius: 4px;text-align:center;line-height: 22px;}
+/*电影开始*/
+.movie-left{width: 780px;}	
+.movie img{height: 236px;}
+.vido-listTB b{font-size: 16px;color:#ff722c;margin-right: 7px;}
+.movie-right{width: 180px;margin-left: 20px;}
+.movie-right-list{margin-top: 25px;}
+.movie-right-list .vido-listT:first-child{height: 290px;}
+.movie-right-list li{width: 180px;height: 20px;line-height: 20px;margin-bottom: 13px;}
+.movie-right-list .mov-num{width: 20px;height: 20px;background: #73ae00;text-align: center;font: 12px/20px "微软雅黑";color:#fff;margin-right: 5px;}
+.movie-right-list .mov-num1{background: #a8a8a8;}
+.movie-right-list .mov-name{color: #333333;}
+.movie-right-list .mov-pic{width: 7px;height: 8px;background: url(../img/icon-list2.png) no-repeat 0 -99px;margin-top: 2px;}
+.movie-right-list .mov-pic1{width: 7px;height: 8px;background: url(../img/icon-list2.png) no-repeat 0 -130px;margin-top: 4px;}
+.movie-right-list .mov-pic2{width: 7px;height: 8px;background: url(../img/icon-list2.png) no-repeat 0 -166px;margin-top: 4px;}
+/*电影结束*/
+/*微电影开始*/
+.micfilm-list{width:580px;}
+.micfilm-list span{margin-left: 5px;}
+.micfilm p{margin-left: 35px;line-height: 22px;font: 14px "微软雅黑";margin-top: 5px;color: #333333;}
+.mic-titl1{padding-right: 19px;background: url(../img/xiegang.png) no-repeat 100% 50%;}
+.micfilm-list li p{background: #f2f2f2;height: 35px;line-height: 35px;width: 180px;margin:0;padding: 0;}
+.micfilm-list li p a{margin-left: 5px;}
+.mov-cli{width: 380px;margin-left: 20px;}
+/*微电影结束*/
+/*电视剧结束*/
+.teleplay .vido-listTB{padding: 0;}
+.teleplay .vido-listTB a{margin-left: 5px;}
+.teleplay .movie-right-list .vido-listT{height: 271px;}
+/*电视剧结束*/
+/*动漫开始*/
+.cartoon{width:580px;}
+.cartoon-list .veriety-lc{height: 36px;background: #f2f2f2;padding: 0 0 0 5px;line-height: 36px;}
+.cartoon-list .variety-cen{margin-right: 0;}
+.cartoon-list .variety-cen .veriety-lb{height: 36px;background: #f2f2f2;padding: 0 0 0 5px;line-height: 36px;}
+.cartoon-list .variety-cen .variety-cen-bom{margin-top: 14px;}
+.child{width: 180px;margin: 0 20px;}
+
+/*动漫结束*/
+/*体育开始*/
+.sport{width:380px;}
+.sport .vido-listTB,.music .vido-listTB,.fashion .vido-listTB{padding:0;line-height: 35px;}
+.music{margin:0 20px;}
+.vido-list .music-big{height: 252px;}
+.music .vido-listTB{padding:0;line-height: 35px;}
+/*体育结束*/
+/*母婴开始*/
+.life{margin:0 20px;}
+.health,.health .sport{width: 180px;}
+.car{margin:0 20px;}
+.original-p {width: 170px;padding: 14px 0 0 10px; background: #f2f2f2;margin-top: 25px;}
+.original-p li{width: 170px;margin-bottom: 12px;float: left;}
+.original-p .org-left {margin-right: 8px;}
+.original-p .org-left img{border:1px solid #d8d8d8;width: 66px;height: 66px;}
+.original-p .org-right{width: 94px;height: 68px;}
+.original-p .org-right p a{font: 14px "微软雅黑";color :#333;width: 96px;}
+.original-p .org-right span{font-size: 14px;color: #999;margin:4px 0 6px 0;width: 96px;}
+.original-p .org-right .order{width: 68px;height: 22px;background: #6ba400;line-height: 22px;font-size: 14px;color: #fff;text-align: center;}
+/*母婴结束*/
+/*搞笑区开始*/
+.funny{margin-right: 20px;}
+.pater{width:380px;}
+.funny span,.pater span{margin-left: 5px;}
+.funny h3 p,.pater  h3 p{margin-left: 35px;line-height: 22px;font: 14px "微软雅黑";margin-top: 5px;color: #333333;}
+.fun-list .funny p a,.pater p a{padding-right: 19px;background: url(../img/xiegang.png) no-repeat 100% 50%;}
+.fun-list .vido-listTB p{margin-left: 5px;}
+/*搞笑区结束*/
+/*频道开始*/
+.channer-list{margin:45px 0 50px 0;}
+.channer-list li{margin-right: 20px;}
+.channer-list li:last-child{margin-right: 0px;}
+.channer-list li img{width: 180px;height: 140px;}
+/*频道结束*/
+/*广告4开始*/
+.banner4 a{width: 980px;height: 100px; background:url(../img/banner4.png) no-repeat;display: block;margin-bottom: 45px;}
+/*广告4开始*/
+/*主体结束*/
+/*尾部开始*/
+.footer{width: 980px;}
+.footerT{margin-bottom: 50px;background: #f7f7f7;color: #333;}
+.footerTL{width:448px;height: 138px;border: 1px solid #e7e7e7;padding: 22px 20px;}	
+.footerT h3{width: 450px;margin-bottom: 20px;}
+.footerT h3 span{font-size: 22px;}
+.footerT h3 a{font-size: 12px;}
+.footerTL li{width: 80px;}
+.footerT li a{float: left;margin-bottom: 17px;}
+.footerTR{width: 448px;border: 1px solid #e7e7e7;height: 138px;padding: 22px 20px;}
+.footerTR li{width: 190px;}
+.footerB{width: 980px;background: #f7f7f7;border: 1px solid #e7e7e7;padding:20px 0 40px;}
+.footerB li{width: 195px;overflow: hidden;height: 20px;line-height: 20px;margin-bottom: 15px;height: 20px;}
+.cx{padding:2px 0 2px 16px;background: url(../img/footb1.png) no-repeat 0 50%;}
+.jingyin{padding:2px 0 2px 16px;background: url(../img/footb2.png) no-repeat 0 50%;}
+.footerB p {margin-left:85px; }
+.footerB p a{border-right: 1px solid #956695;padding:0 10px;}
+.footerB p a:last-child{border: none;}
+.footerB .jubao{margin:15px 0 0 230px;}
+.footerB .copyright{margin:15px 0 0 270px;}
+/*尾部结束*/

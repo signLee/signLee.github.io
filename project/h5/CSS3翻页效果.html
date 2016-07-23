@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS3翻页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 700px;
+            height: 400px;
+            background: url("img/1.jpg");
+            margin: 50px auto;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .page1 {
+            width: 350px;
+            height: 400px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 2;
+            -webkit-transform-origin:left;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform: perspective(800px) rotateY(0deg);
+        }
+
+        .page1 div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .page1 .front {
+            background: url("img/1.jpg") no-repeat right;
+            -webkit-transform: translateZ(1px);
+        }
+
+        .page1 .back {
+            background: url("img/2.jpg") no-repeat;
+            -webkit-transform: translateZ(-1px) scale(-1, 1);
+        }
+
+        .page2 {
+            width: 350px;
+            height: 400px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: url("img/2.jpg") no-repeat right;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="page1">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+    <div class="page2"></div>
+</div>
+<script>
+    window.onload = function () {
+        var oBox = document.querySelector(".box");
+        var oP1 = document.querySelector(".page1");
+        var oFront = document.querySelector(".front");
+        var oBack = document.querySelector(".back");
+        var oP2 = document.querySelector(".page2");
+        var now =0;
+        var bOk = false;
+        oBox.onclick=function(){
+            if(bOk){return}
+            bOk=true;
+            oP1.style.webkitTransition='all 1s ease';
+            oP1.style.webkitTransform='perspective(800px) rotateY(-180deg)';
+            function transEnd(){
+                now++;
+                oP1.removeEventListener('transitionend',transEnd,false);
+                oP1.style.webkitTransition='none';
+                oBox.style.backgroundImage='url("img/'+(now%3+1)+'.jpg")';
+                oFront.style.backgroundImage='url("img/'+(now%3+1)+'.jpg")';
+                oBack.style.backgroundImage='url("img/'+((now+1)%3+1)+'.jpg")';
+                oP2.style.backgroundImage='url("img/'+((now+1)%3+1)+'.jpg")';
+                oP1.style.webkitTransform='perspective(800px) rotateY(0deg)';
+                bOk=false;
+
+            }
+            oP1.addEventListener('transitionend',transEnd,false);
+        }
+    }
+</script>
+</body>
+</html>

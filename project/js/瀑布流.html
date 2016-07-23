@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>瀑布流</title>
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+#div1{width:930px;background:red; overflow: hidden; margin:0 auto;}
+#div1 ul{width:300px; float:left;margin-right:10px; background:#CCC;}
+#div1 ul li{/*height:300px;*/ background:#333; margin-bottom:20px;}
+
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('div1');
+	var aUl=oDiv.children;
+	function createLi(){
+		var oLi=document.createElement('li');
+		oLi.style.height=parseInt(Math.random()*(400-100)+100)+'px';
+		return oLi;
+	}//创建一个高度随机的li
+	insertToUl(10);
+	function insertToUl(count){
+		for(var j=0;j<count;j++){
+			var minNum=9999999999;
+			var minIndex=-1;
+			for(var i=0;i<aUl.length;i++){
+				if(aUl[i].offsetHeight<minNum){
+					minNum=aUl[i].offsetHeight;
+					minIndex=i;
+				}
+			}
+			aUl[minIndex].appendChild(createLi());
+		}
+	}  //将每一个li插入到当前高度最小的那个ul里
+	window.onscroll=function(){//当屏幕的滚动距离+屏幕的距离大于body的=body的盒模型尺寸时  再加载一组Li
+		var clientH=document.documentElement.clientHeight;
+		var scrollH=document.documentElement.scrollTop||document.body.scrollTop;
+		var bodyH=document.body.offsetHeight;
+		if(clientH+scrollH==bodyH){
+			insertToUl(10);
+		}
+	
+	}
+	
+};
+</script>
+</head>
+
+<body>
+
+<div id="div1">
+	<ul></ul>
+	<ul></ul>
+	<ul></ul>
+</div>
+
+</body>
+</html>

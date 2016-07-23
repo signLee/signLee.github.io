@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<style>
+#div1{width:100%;position:fixed;bottom:0;left:0;text-align:center;}
+#div1 img{width:68px;}
+</style>
+</head>
+<body>
+<div id="div1">
+	<img src="img2/1.png"alt="图片">
+	<img src="img2/2.png"alt="图片">
+	<img src="img2/3.png"alt="图片">
+	<img src="img2/4.png"alt="图片">
+	<img src="img2/5.png"alt="图片">
+</div>
+<script>
+window.onload=function(){
+var oDiv=document.getElementById('div1');
+var aImg=oDiv.children;
+	document.onmousemove=function(ev){
+		var oEvt=ev||event;
+		for (var i = 0; i < aImg.length; i++) {
+		
+			
+			var a=aImg[i].offsetLeft+1/2*(aImg[i].offsetWidth)-oEvt.clientX;
+			var b=aImg[i].offsetTop+oDiv.offsetTop+1/2*(aImg[i].offsetHeight)-oEvt.clientY;
+			var c=Math.sqrt(a*a+b*b);
+			var dis=c;
+			var scale=1-dis/300; 
+			if (scale<0.5) {scale=0.5};
+			aImg[i].style.width=scale*128+'px';
+			aImg[i].style.height=scale*128+'px';
+
+
+		}
+	};
+}
+</script>
+</body>
+</html>

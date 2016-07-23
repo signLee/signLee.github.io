@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>幻灯片左右滑动效果</title>
+<link href="css.css" rel="stylesheet" type="text/css" />
+<script src="move8.js"></script>
+<script>
+window.onload=function(){
+	var oPlay=document.getElementById('play');
+	var aHead=oPlay.children[2].children;
+	var aContent=oPlay.children[3];	
+	var oNext=oPlay.getElementsByClassName('next')[0];
+	var oPrev=oPlay.getElementsByClassName('prev')[0];
+	var now=0;
+	var ready=true;
+	
+	aContent.innerHTML+=aContent.innerHTML;//复制一份
+	aContent.style.width=aContent.children.length*470+'px';
+	
+	for(var i=0;i<aHead.length;i++){
+		(function(index){
+			aHead[i].onclick=function(){
+				now=index;
+				tab();
+			};	
+		})(i);
+	}
+	
+	function tab(){
+		for(var i=0;i<aHead.length;i++){
+			aHead[i].className='';	
+		}
+		if(now==aHead.length){
+			aHead[0].className='active';	
+		}else{
+			aHead[now].className='active';		
+		}
+		move(aContent,{left:-now*470},{fn:function(){
+			ready=true;
+			if(now==aHead.length){
+				aContent.style.left=0;
+				now=0;
+			}
+		}});
+			
+	}
+	
+	oNext.onclick=next;
+	
+	function next(){
+		if(!ready) return;
+		ready=false;
+		now++;//计算
+		
+		tab();//使用
+		
+		console.log(now);
+	};
+	oPrev.onclick=function(){
+		if(!ready) return;
+		ready=false;
+		if(now==0){
+			aContent.style.left= -aContent.offsetWidth/2+'px';
+			now=aHead.length-1;
+		}else{
+			now--;
+		}
+		
+		tab();
+	};
+	
+	var timer=setInterval(next,1000);
+	oPlay.onmouseover=function(){
+		clearInterval(timer);	
+	};
+	oPlay.onmouseout=function(){
+		timer=setInterval(next,1000);
+	};
+	
+};
+</script>
+</head>
+
+<body>
+
+<div class="box" id="play">
+    <p class="prev">&laquo;</p>
+    <p class="next">&raquo;</p>
+    <ol>
+        <li class="active">0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+    <ul>
+        <li><a href="http://www.zhinengshe.com/"><img src="images/1.jpg" alt="广告一" /></a></li>
+        <li><a href="http://www.zhinengshe.com/"><img src="images/2.jpg" alt="广告二" /></a></li>
+        <li><a href="http://www.zhinengshe.com/"><img src="images/3.jpg" alt="广告三" /></a></li>
+        <li><a href="http://www.zhinengshe.com/"><img src="images/4.jpg" alt="广告四" /></a></li>
+        <li><a href="http://www.zhinengshe.com/"><img src="images/5.jpg" alt="广告五" /></a></li>
+    </ul>
+</div>
+
+</body>
+</html>

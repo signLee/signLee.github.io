@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>放大镜</title>
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+#div1{width:310px;height:310px; position:relative;}
+#div2{width:310px;height:310px; position:absolute;left:350px;top:0; border:#333 solid 1px; overflow: hidden; display:none;}
+#mark{width:100px;height:100px;background:green; opacity:0.4; position:absolute;left:0;top:0; display:none;}
+#div2 img{ position:absolute;left:0;top:0;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv1=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+	var oMark=document.getElementById('mark');
+	var oBigImg=document.getElementById('bigImg');
+	oDiv1.onmouseover=function(){
+		oDiv2.style.display=oMark.style.display='block';	
+	};	
+	oDiv1.onmouseout=function(){
+		oDiv2.style.display=oMark.style.display='none';	
+	};
+	oDiv1.onmousemove=function(ev){
+		var oEvt=ev||event;
+		
+		var l=oEvt.clientX-oMark.offsetWidth/2;//计算
+		var t=oEvt.clientY-oMark.offsetHeight/2;
+		
+		//限定
+		if(l<0) l=0;
+		if(l>oDiv1.offsetWidth-oMark.offsetWidth)
+			l=oDiv1.offsetWidth-oMark.offsetWidth;
+		if(t<0) t=0;
+		if(t>oDiv1.offsetHeight-oMark.offsetHeight)
+			t=oDiv1.offsetHeight-oMark.offsetHeight;
+		
+		oMark.style.left=l+'px';//使用l
+		oMark.style.top=t+'px';	
+		
+		//控制大图	小图.left/小图行程=大图.left/大图行程	比值相等
+		oBigImg.style.left=-oMark.offsetLeft/(oDiv1.offsetWidth-oMark.offsetWidth)*(oBigImg.offsetWidth-oDiv2.offsetWidth)+'px';
+		oBigImg.style.top=-oMark.offsetTop/(oDiv1.offsetHeight-oMark.offsetHeight)*(oBigImg.offsetHeight-oDiv2.offsetHeight)+'px';
+	};
+};
+</script>
+</head>
+
+<body>
+
+<div id="div1">
+	<img src="img/m1.jpg">
+    <div id="mark"></div>
+    <div id="div2">
+    	<img src="img/b1.jpg" id="bigImg">
+    </div>
+</div>
+
+</body>
+</html>

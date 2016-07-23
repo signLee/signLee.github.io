@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>3D图片环</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background: #000;
+            overflow: hidden;
+        }
+
+        ul {
+            width: 133px;
+            height: 200px;
+            margin: 50px auto;
+            position: relative;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform: perspective(800px) rotateX(0) rotateY(0);
+        }
+
+        ul li {
+            width: 133px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transform: rotateY(0deg) translateZ(0px);
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px #fff;
+        }
+
+        ul li img {
+            width: 133px;
+            height: 200px;
+        }
+
+        ul li div {
+            position: absolute;
+            width: 133px;
+            height: 200px;
+            top: 210px;
+            left: 0;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            -webkit-transform:scale(1, -1);
+            -webkit-mask: -webkit-linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5));
+        }
+    </style>
+    <script>
+        function getStyle(obj, sName) {
+            return (obj.currentStyle || getComputedStyle(obj, false))[sName];
+        }//无法获取到 webkit-transform里想要的属性
+        window.onload = function () {
+            var oUl = document.querySelector('ul');
+            var aLi = document.querySelectorAll('ul li');
+            var aDiv = document.querySelectorAll('ul li div');
+            var bOk = false;
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].style.WebkitTransition = '1s all ease ' + (11 - i) * 100 + 'ms'; //延时出现
+                aLi[i].style.WebkitTransform = ' rotateY(' + i * 360 / 11 + 'deg) translateZ(350px)';//先移动再旋转
+              aDiv[i].style.backgroundImage='url(img2/'+parseInt(i+1)+'.jpg)';
+              aDiv[i].style.WebkitTransform='scale(1, -1)';
+            }
+            function tranEnd() {
+                aLi[0].removeEventListener('transitionend', tranEnd, false);
+                bOk = true;//第一张图片运动完后才可以拖拽
+            }
+
+            aLi[0].addEventListener('transitionend', tranEnd, false);
+            var x = 0;//模拟一个角度值
+            var y = 0;
+            var iSpeedX = 0;//加速度
+            var iSpeedY = 0;
+            var lastX = 0;//鼠标移动的上一个点
+            var lastY = 0;
+            var timer = null;
+            oUl.onmousedown = function (ev) {
+                if (!bOk) return;
+                clearInterval(timer);//再次点击时停止运动
+                var disX = ev.pageX - y;//拖动X轴时 旋转的是Y轴
+                var disY = ev.pageY - x;
+                document.onmousemove = function (ev) {
+                    x = ev.pageY - disY;//计算出鼠标Y轴移动的距离赋值给rotateX
+                    y = ev.pageX - disX;
+                    oUl.style.WebkitTransform = 'perspective(800px) rotateX(' + -x / 5 + 'deg) rotateY(' + y / 5 + 'deg)';
+                    iSpeedX = ev.pageX - lastX;//鼠标移动了多少 此处的lastX取的上一次的值
+                    iSpeedY = ev.pageY - lastY;
+
+                    lastX = ev.pageX;//不能写在iSpeedX的前面 写在前面的话 iSpeedX就一直是0
+                    lastY = ev.pageY;
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    clearInterval(timer);//开定时器前先清定时器
+                    timer = setInterval(function () {
+                        iSpeedX *= 0.95;//摩擦力
+                        iSpeedY *= 0.95;
+                        x += iSpeedY;//旋转的加速度
+                        y += iSpeedX;
+                        oUl.style.WebkitTransform = 'perspective(800px) rotateX(' + -x / 5 + 'deg) rotateY(' + y / 5 + 'deg)';
+
+                        if (Math.abs(iSpeedX) < 1)iSpeedX = 0;
+                        if (Math.abs(iSpeedY) < 1)iSpeedY = 0;
+                        if (iSpeedX == 0 && iSpeedY == 0) {
+                            clearInterval(timer);
+                        }
+                    }, 30);
+                };
+                return false;
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+<ul>
+    <li>
+        <img src="img2/1.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/2.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/3.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/4.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/5.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/6.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/7.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/8.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/9.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/10.jpg"/>
+        <div></div>
+    </li>
+    <li>
+        <img src="img2/11.jpg"/>
+        <div></div>
+    </li>
+</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

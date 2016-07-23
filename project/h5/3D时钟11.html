@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D时钟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            width: 100%;
+            background: #000;
+        }
+
+        #timerBox {
+            width: 1000px;
+            height: 400px;
+            margin: 300px auto;
+
+            transform-style: preserve-3d;
+            transition: 1s all ease;
+            transform: perspective(800px) rotateY(-10deg) rotateX(-40deg);
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform: perspective(800px) rotateY(0deg) rotateX(-40deg);
+        }
+        ul, p {
+            float: left;
+            margin-right: 40px;
+            font-size: 30px;
+            color: #fff;
+        }
+
+        p {
+            line-height: 100px;
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: #1cc7ff;
+        }
+
+        ul {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(800px) rotateY(0deg) scale(1, 1);
+            transition: 1s all ease;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform: perspective(800px) rotateY(0deg) scale(1, 1);
+            -webkit-transition: 1s all ease;
+        }
+
+        ul li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            box-shadow: inset 0 0 20px #fff, 0px 0px 20px blue;
+            transition: 1s all ease;
+            text-align: center;
+            line-height: 100px;
+            font-size: 30px;
+        }
+
+        ul li.top {
+            -webkit-transform: translate(0, -50px) rotateX(90deg);
+            transform: translate(0, -50px) rotateX(90deg);
+        }
+
+        ul li.bottom {
+            -webkit-transform: translate(0, 50px) rotateX(-90deg);
+            transform: translate(0, 50px) rotateX(-90deg);
+        }
+
+        ul li.left {
+            -webkit-transform: translate(-50px, 0) rotateY(-90deg);
+            transform: translate(-50px, 0) rotateY(-90deg);
+        }
+
+        ul li.right {
+            -webkit-transform: translate(50px, 0) rotateY(90deg);
+            transform: translate(50px, 0) rotateY(90deg);
+        }
+
+        ul li.front {
+            -webkit-transform: translateZ(50px);
+            transform: translateZ(50px);
+        }
+
+        ul li.back {
+            -webkit-transform: translateZ(-50px) scale(1, -1);
+            transform: translateZ(-50px) scale(1, -1);
+        }
+
+        @keyframes timeMove {
+            0% {
+                transform: rotateX(0deg);
+            }
+            100% {
+                transform: rotateX(90deg);
+            }
+        }
+        @-webkit-keyframes timeMove {
+            0% {
+                -webkit-transform: rotateX(0deg);
+            }
+            100% {
+                -webkit-transform: rotateX(90deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="timerBox">
+    <ul id="h1"></ul>
+    <ul id="h2"></ul>
+    <p class="point">:</p>
+    <ul id="m1"></ul>
+    <ul id="m2"></ul>
+    <p class="point">:</p>
+    <ul id="s1"></ul>
+    <ul id="s2"></ul>
+</div>
+<script>
+    window.onload = function () {
+        var oTimeBox = document.querySelector('#timerBox');
+        var aUl = document.querySelectorAll("#timerBox ul");
+        var oH1 = document.querySelector('#h1');
+        var oH2 = document.querySelector('#h2');
+        var oM1 = document.querySelector('#m1');
+        var oM2 = document.querySelector('#m2');
+        var oS1 = document.querySelector('#s1');
+        var oS2 = document.querySelector('#s2');
+        for(var i=0;i<aUl.length;i++){
+            aUl[i].innerHTML='<li class="front"></li>\
+                    <li class="top"></li>\
+                    <li class="back"></li>\
+                    <li class="bottom"></li>\
+                    <li class="left"></li>\
+                    <li class="right"></li>';
+        }
+
+        var aLi = document.querySelectorAll("#timerBox ul li");
+        setInterval(function () {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].innerHTML = "";
+            }
+
+            var aLiH1 = oH1.children;
+            var aLiH2 = oH2.children;
+            var aLiM1 = oM1.children;
+            var aLiM2 = oM2.children;
+            var aLiS1 = oS1.children;
+            var aLiS2 = oS2.children;
+            var d = new Date();
+            var h = d.getHours();
+            var h1 = parseInt(h / 10);
+            var h2 = h % 10;
+            var m = d.getMinutes();
+            var m1 = parseInt(m / 10);
+            var m2 = m % 10;
+            var s = d.getSeconds();
+            var s1 = parseInt(s / 10);
+            var s2 = s % 10;
+            for (var i = 0; i < aLiH1.length - 2; i++) {
+                aLiH1[i].innerHTML = h1;
+                aLiH2[i].innerHTML = h2;
+                aLiM1[i].innerHTML = m1;
+                aLiM1[3].innerHTML = m1 + 1;
+                aLiM2[i].innerHTML = m2;
+                aLiM2[3].innerHTML = m2 + 1;
+                aLiS1[i].innerHTML = s1;
+                aLiS1[3].innerHTML = s1 + 1;
+                aLiS2[0].innerHTML = (s2 + 1) % 10;
+                aLiS2[1].innerHTML = Math.abs(s2 - 1);
+                aLiS2[2].innerHTML = Math.abs(s2 - 2);
+                aLiS2[3].innerHTML = (s2 + 1) % 10;
+            }
+            for(var i=0;i<aUl.length-1;i++){
+                aUl[i].style.animation='none';
+            }
+            oS2.style.animation = 'timeMove 1s infinite';
+            if(s2+1>=10){
+                oS1.style.animation = 'timeMove 1s infinite';
+            }
+            if(s1+1>=6&&s2+1>=10){
+                oM2.style.animation = 'timeMove 1s infinite';
+            }
+            if(m2+1>=10&&s1+1>=6&&s2+1>=10){
+                oM1.style.animation = 'timeMove 1s infinite';
+            }
+            if(m1+1>=6&&m2+1>=10&&s1+1>=6&&s2+1>=10){
+                oH2.style.animation = 'timeMove 1s infinite';
+            }
+            if(h2+1>=10&&m1+1>=6&&m2+1>=10&&s1+1>=6&&s2+1>=10){
+                oH1.style.animation = 'timeMove 1s infinite';
+            }
+            
+        }, 100)
+    }
+</script>
+</body>
+</html>

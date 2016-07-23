@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+<style>
+
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#warp{
+	width: 300px;
+	height: 320px;
+	padding-top: 100px;
+	margin:0 auto;
+}
+#head{
+	width: 300px;
+	height: 25px;
+}
+#head li{
+	float: left;
+	width: 150px;
+	height: 25px;
+	background: #efefef;
+	border-radius: 8px 8px 0 0 ;
+	font-size: 12px;
+	text-align: center;
+	line-height: 25px;
+}
+#head .active{
+	background: #847b73;
+	color: white;
+}
+#main{
+	width: 280px;
+	height: 230px;
+	border:10px #efefef solid;
+	border-radius: 0 0 8px 8px;
+	background: #efefef;
+	position: relative;
+	overflow: hidden;
+}
+#main ul{
+	position: absolute;
+	display: none;
+}
+#main .active{
+	display: block;
+}
+#main li{
+	width: 265px;
+	height: 22px;
+	border-bottom: 1px white solid;
+	border-top: 1px #cecece solid;
+}
+#main input{
+	width: 11px;
+	height: 25px;
+	position: absolute;
+}
+#up{
+	top: 180px;
+	left: 269px;
+}
+#down{
+	top: 205px;
+	left: 269px;
+}
+#div1{
+	width: 9px;
+	height: 178px;
+	border:1px solid #c0c0c0;
+	border-radius: 3px;
+	background: #ded6d6;
+	position: absolute;
+	top:0;
+	left: 269px;
+}
+#mark{
+	width: 9px;
+	height: 45px;
+	background: #f77b00;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 3px;
+}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var oBar=document.getElementById('mark')
+	var oBarParent=document.getElementById('div1')
+	var oContentWrap=document.getElementById('main')
+	var oContent=oContentWrap.children[0];
+	var oWrap=document.getElementById('warp')
+	var oUp=document.getElementById('up')
+	var oDown=document.getElementById('down')
+	var aCardHead=document.getElementById('head').children;
+	var aCardContent=document.getElementById('main').getElementsByTagName('ul');
+	var timer=null;
+	//选项卡
+	for (var i = 0; i < aCardHead.length; i++) {
+		(function(index){
+			aCardHead[i].onclick=function(){
+				for (var i = 0; i < aCardHead.length; i++) {
+					aCardHead[i].className=aCardContent[i].className='';
+				};
+				this.className='active';
+				aCardContent[index].className='active';
+				oContent=aCardContent[index];//更新拖拽内容
+				//a=c/d*b
+				oBar.style.top=oContent.offsetTop/(oContentWrap.offsetHeight-oContent.offsetHeight)*(oBarParent.offsetHeight-oBar.offsetHeight)+'px';
+			};
+		})(i);
+	};
+	//拖拽
+	oBar.onmousedown=function(ev){
+		var oEvt=ev||event;
+		var disY=oEvt.clientY-oBar.offsetTop;
+		document.onmousemove=function(ev){
+			var oEvt=ev||event;
+			var t=oEvt.clientY-disY;//控制oBar
+			setPos(t);
+		};
+		document.onmouseup=function(){
+			document.onmouseup=document.onmousemove=null;
+		};
+		return false;
+	};
+	function setPos(t){
+		if(t<0)t=0;
+		if(t>oBarParent.offsetHeight-oBar.offsetHeight)
+			t=oBarParent.offsetHeight-oBar.offsetHeight;
+		oBar.style.top=t+'px';
+		var scale=oBar.offsetTop/(oBarParent.offsetHeight-oBar.offsetHeight);
+		//控制oContent
+		oContent.style.top=scale*(oContentWrap.offsetHeight-oContent.offsetHeight)+'px';
+	}
+	//滚轮
+	addMouseWheel(oWrap,function(down){
+		//计算t
+		var t=oBar.offsetTop;
+		if(down){
+			t+=10;
+		}else{
+			t-=10;
+		}
+		setPos(t);
+	});
+	function addMouseWheel(obj,fn){
+		if(navigator.userAgent.toLowerCase().indexOf('firefox') != -1){
+			obj.addEventListener('DOMMouseScroll', fnWheel,false)
+		}else{
+			obj.onmousewheel=fnWheel;
+		}
+		function fnWheel(ev){
+			var oEvt=ev||event;
+			var down=false;
+			if(oEvt.wheelDelta){
+				down=oEvt.wheelDelta<0?true:false;
+			}else{
+				down=oEvt.detail>0?true:false;
+			}
+			fn && fn(down);
+		}
+	}
+	//上下
+	oDown.onmousedown=oUp.onmousedown=function(){
+		var _this=this;
+		timer=setInterval(function(){
+			var t=oBar.offsetTop;
+			if(_this.id=='down'){
+				t+=10;
+			}else{
+				t-=10;
+			}
+			setPos(t);
+		},100);
+	};
+	oDown.onmouseup=oUp.onmouseup=function(){
+		clearInterval(timer);
+	};
+	oDown.onclick=oUp.onclick=function(){
+		var t=oBar.offsetTop;
+		if(this.id=='up'){
+			t-=10;
+		}else{
+			t+=10;
+		}
+		setPos(t);
+	};
+
+	
+
+	
+};
+</script>
+</head>
+<body>
+<div id="warp">
+	<ul id="head">
+		<li class="active">所有频道</li>
+		<li>最爱频道</li>
+	</ul>
+	<div id="main">
+		<ul class="active">
+			<li>11</li>
+			<li>22</li>
+			<li>33</li>
+			<li>44</li>
+			<li>55</li>
+			<li>66</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>ghjkg</li>
+			<li>fjf</li>
+			<li>ghj</li>
+			<li>sfs</li>
+			<li>ggdfg</li>
+			<li>dfgadfg</li>
+			<li>SDFs</li>
+			<li>sdfasdf</li>
+			<li>sadfadf</li>
+			<li>werwer</li>
+			<li>sdfasfaf</li>
+			
+		</ul>
+		<ul>
+			<li>ssfdaafdsa1</li>
+			<li>2asdfffff2</li>
+			<li>3dsffffffffff3</li>
+			<li>4fdssssssssssss4</li>
+			<li>5dfsssssssssssss5</li>
+			<li>xcvvvvvvvvvvvvvv66</li>
+			<li>xcvvvvvvvvvvv7</li>
+			<li>xcvvvvvvvvv8</li>
+			<li>xcvvvvvvvvvvv9</li>
+			<li>xcvvvvvvvvvvghjkg</li>
+			<li>fxcvvvvvvvvvvvvjf</li>
+			<li>gxcvvvvvvvvvvvvhj</li>
+			<li>sxcvvvvvvvvvvvfs</li>
+			<li>gxvccccccccccccccgdfg</li>
+			<li>dxcvvvvvvvvvvvvfgadfg</li>
+			<li>SDxcvvvvvvvvvvvvvvFs</li>
+			<li>sxcvvvvvvvvvvvvvvvvdfasdf</li>
+			<li>saxvccccccccccccccdfadf</li>
+			<li>wexcvvvvvvvvvrwer</li>
+			<li>sdxcvvvvvvvvvvvvfasfaf</li>
+			
+		</ul>
+		<div id="div1">
+            <div id="mark"></div>	
+        </div>
+        <input id="up" type="button" value="↑">
+        <input id="down" type="button" value="↓">
+	</div>
+</div>
+	
+</body>
+</html>

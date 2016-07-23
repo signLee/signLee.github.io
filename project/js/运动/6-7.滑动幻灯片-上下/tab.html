@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>淘宝幻灯片上下滑动效果</title>
+<link href="css.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="play" id="play">
+    <ol>
+    	<li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+	<ul>
+		<li><a href="http://www.zhinengshe.com/"><img src="images/1.jpg" alt="广告一" /></a></li>
+		<li><a href="http://www.zhinengshe.com/"><img src="images/2.jpg" alt="广告二" /></a></li>
+		<li><a href="http://www.zhinengshe.com/"><img src="images/3.jpg" alt="广告三" /></a></li>
+		<li><a href="http://www.zhinengshe.com/"><img src="images/4.jpg" alt="广告四" /></a></li>
+		<li><a href="http://www.zhinengshe.com/"><img src="images/5.jpg" alt="广告五" /></a></li>
+	</ul>
+</div>
+<script>
+window.onload=function(){
+var oDiv=document.getElementById('play');
+var aHead=oDiv.children[0].children;
+var aContent=oDiv.children[1];
+var iNow=0;
+	for (var i = 0; i < aHead.length; i++) {
+		aHead[i].index=i;
+		aHead[i].onmouseover=function(){
+			iNow=this.index;
+			for(var i = 0; i < aHead.length; i++) {
+				aHead[i].className='';
+			}
+			this.className='active';
+			move(aContent,'top',-iNow*150,400);
+		}
+
+	};
+
+	function move(obj,attr,iTaget,time){
+		var start=parseFloat(getStyle(obj,attr));
+		var n=0;
+		var dis=iTaget-start;
+		var count=Math.round(time/100);
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			n++;
+			var cur=start+n*(dis/count);
+			if (attr=='opacity') {
+				obj.style.opacity=cur;
+				obj.style.filter='alpha(opacity:'+cur*100+')';
+			}else{
+				obj.style[attr]=cur+'px';
+			}
+			if (count==n) {
+				clearInterval(obj.timer);
+			};
+		}, 100)
+
+
+
+		function getStyle(obj,attr){
+			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj,false)[attr];
+		}
+	}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>延时加载</title>
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+#div1{width:200px;height:200px;background:red;position: absolute;left:0;top:0;}
+img{width:310px;height:310px; border:#333 solid 1px;}
+</style>
+<script>
+window.onload=function(){
+	var aImg=document.getElementsByTagName('img');
+	loadImg();
+	window.onscroll=window.onresize=loadImg;
+	function loadImg(){
+		//判断图是否进来了
+		//scrollTop+clientHeight>img.top
+		var scrTop=document.documentElement.scrollTop||document.body.scrollTop;
+		var clientH=document.documentElement.clientHeight;
+		for(var i=0;i<aImg.length;i++){
+			var imgTop = aImg[i].offsetTop;
+			if(scrTop+clientH>imgTop){
+				aImg[i].src=aImg[i].getAttribute('_src');
+			}
+		}
+	};
+	
+};
+</script>
+</head>
+
+<body>
+
+<img _src="img/m1.jpg">
+<img _src="img/m2.jpg">
+<img _src="img/m3.jpg">
+<img _src="img/m4.jpg">
+<img _src="img/m5.jpg">
+<img _src="img/m6.jpg">
+<img _src="img/m7.jpg">
+<img _src="img/m8.jpg">
+<img _src="img/m9.jpg">
+<img _src="img/m10.jpg">
+
+</body>
+</html>

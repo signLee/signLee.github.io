@@ -1,0 +1,411 @@
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, td, img, dl, dt, dd, input {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    font-size: 12px;
+    font-family: '\65B0\5B8B\4F53', '\5B8B\4F53', Verdana;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+select, input, img {
+    vertical-align: middle;
+    outline: none;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a {
+    blr: expression(this.onFocus=this.blur())
+}
+
+a {
+    outline: none;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+i, em {
+    font-style: normal;
+}
+
+b, strong {
+    font-weight: normal;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+html {
+    font-size: 20px;
+}
+
+.wrap {
+    width: 16rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/*头部开始*/
+.head {
+    height: 2.5rem;
+    background: #f8f8f8;
+}
+
+.head .back {
+    width: 3.2rem;
+    height: 1.55rem;
+    margin: 0.55rem 0 0 0.55rem;
+    text-indent: -99999em;
+    background: url("../image/backbg.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.head .logo {
+    width: 3.7rem;
+    height: 1rem;
+    text-indent: -99999em;
+    background: url("../image/logo.png") no-repeat;
+    background-size: 100% 100%;
+    margin: 0.75rem 0 0 2.5rem;
+}
+
+/*头部结束*/
+
+/*banner图开始*/
+.banner {
+    height: 7.45rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner .banner_picList {
+    overflow: hidden;
+    height: 6.7rem;
+    width: 800rem;
+    transform: translateX(-16rem);
+}
+
+.banner .banner_picList li {
+    float: left;
+    width: 16rem;
+}
+
+.banner .banner_picList img {
+    height: 6.7rem;
+    width: 16rem;
+}
+
+.banner .pageList {
+    width: 2.25rem;
+    height: 0.25rem;
+    position: absolute;
+    left: 5.9rem;
+    bottom: 0rem;
+}
+
+.banner .pageList li {
+    float: left;
+    width: 0.25rem;
+    height: 0.25rem;
+    background: #a9a9a9;
+    border-radius: 50%;
+    margin-right: 0.25rem;
+}
+
+.banner .pageList li.active {
+    background: #ff4300;
+}
+
+.banner .pageList li:last-child {
+    margin-right: 0;
+}
+
+/*banner图结束*/
+/*导航开始*/
+.nav {
+    padding: 0 1.3rem;
+    margin-bottom: 0.5rem;
+    height: 8.5rem;
+}
+
+.nav li {
+    float: left;
+    width: 2rem;
+    margin: 1rem 1.75rem 0 0;
+}
+
+.nav li:nth-child(4) {
+    margin-right: 0;
+}
+
+.nav li:nth-child(8) {
+    margin-right: 0;
+}
+
+.nav li img {
+    width: 2.05rem;
+    height: 3rem;
+}
+
+/*导航结束*/
+/*内容区开始*/
+/*前10排行开始*/
+.content {
+    width: 15rem;
+    padding-top: 1.1rem;
+}
+
+.content .hotsales h3 {
+    width: 100%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    font: bold 0.6rem "微软雅黑";
+}
+
+.content .hotsales h3 em {
+    border-left: 0.1rem solid #d51938;
+    padding: 0.05rem 0 0.05rem 0.45rem;
+}
+
+.content .hotsales h3 b {
+    width: 2.4rem;
+}
+
+.content .hotsales .hotsalesList {
+    width: 15rem;
+    padding-top: 0.25rem;
+    margin: 0.5rem 0.5rem 0rem 0.5rem;
+    border-top: 0.1rem solid #dcdcdc;
+}
+
+.hotsalesList .icon {
+    width: 0.35rem;
+    height: 0.55rem;
+    background: url("../image/next_icon.png");
+    background-size: 100% 100%;
+    position: absolute;
+    top: 1.1rem;
+    right: 0.5rem;
+}
+
+.hotsalesList li {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.hotsalesList .hotsales_left {
+    width: 6rem;
+}
+
+.hotsalesList .hotsales_left div:first-child img {
+    width: 1.5rem;
+    height: 3rem;
+}
+
+.hotsalesList .hotsales_left div:last-child img {
+    width: 4.5rem;
+    height: 3rem;
+}
+
+.hotsalesList .sale_data {
+    width: 9rem;
+    height: 3rem;
+    background: #f4f4f4;
+}
+
+.hotsalesList .sale_data .solded {
+    width: 5.3rem;
+    height: 3rem;
+    padding: 0.7rem 0 0.75rem 0.55rem;
+    font: 0.6rem "微软雅黑";
+    color: #999999;
+}
+
+.hotsalesList .sale_data .solded p {
+    margin-top: 0.3rem;
+}
+
+.hotsalesList .sale_data .solded p span {
+    color: #c7223d;
+}
+
+.hotsalesList .sale_data .solded p b {
+    text-decoration: line-through;
+}
+
+.hotsalesList .sale_data .price {
+    font: bold 0.6rem "微软雅黑";
+    margin-top: 1rem;
+    margin-right: 1.2rem;
+    color: #d51938;
+}
+
+/*前10排行结束*/
+/*加载更多*/
+.load_more {
+    width: 100%;
+    background: #f5f5f5;
+    height: 2rem;
+    font-size: 0.7rem;
+    color: #666666;
+    text-align: center;
+    line-height: 2rem;
+}
+
+/*cta区开始*/
+.cta .cta_list {
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.cta .cta_list .cta_left img {
+    width: 3.75rem;
+    height: 8.8rem;
+}
+
+.cta .cta_list .cta_right {
+    width: 11.25rem;
+}
+
+.cta .cta_list .cta_right li {
+    box-sizing: border-box;
+    border: 0.05rem solid #eee;
+    width: 3.75rem;
+    height: 2.2rem;
+    float: left;
+    text-align: center;
+    font-size: 0.6rem;
+    line-height: 2.2rem;
+}
+
+.cta .cta_list .cta_right li:active {
+    background: #f4f4f4;
+    border: 0.05rem solid #00ffff;
+}
+
+.cta .cta_list .cta_right li a {
+    color: #999;
+}
+
+.cta .cta_list .cta_right li.on a {
+    color: #d51942;
+}
+
+.cta .cta_list .load_more {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+/*cta区结束*/
+
+/*应用区开始*/
+.content .download {
+    width: 100%;
+    height: 4rem;
+}
+
+.content .download li {
+    float: left;
+}
+
+.content .download li img {
+    width: 5rem;
+    height: 4rem;
+}
+
+/*应用区结束*/
+/*登录区开始*/
+.content .login {
+    height: 2.2rem;
+    width: 100%;
+    background: #f8f8f8;
+    margin-top: 0.45rem;
+    padding-left: 0.25rem;
+    font: bold 0.6rem/2.2rem "微软雅黑";
+    position: relative;;
+}
+
+.content .login span {
+    margin-right: 1.2rem;
+}
+
+.content .login span:nth-child(3) {
+    margin-left: 6.9rem;
+}
+
+.content .login i {
+    width: 0.4rem;
+    height: 0.2rem;
+    background: url("../image/top.png");
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0.9rem;
+    right: 0.7rem;
+}
+
+/*内容区结束*/
+/*尾部开始*/
+.footer {
+    height: 3.7rem;
+    width: 16rem;
+    background: #eeeeee;
+}
+
+.footer .top {
+    font: bold 0.6rem "微软雅黑";
+    width: 100%;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.footer .top span {
+    margin-right: 0.65rem;
+}
+
+.footer .bottom {
+    font-size: 0.6rem;
+    padding-top: 0.8rem;
+    width: 100%;
+    text-align: center;
+    color: #999;
+}
+
+.to_top {
+    width:1.5rem;
+    height:2.5rem;
+    background: url("../image/toTop.png");
+    background-size: 100% 100%;
+    opacity: 0.3;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
