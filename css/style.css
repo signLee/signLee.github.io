@@ -6,6 +6,7 @@ body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div
 
 body {
     font-size: 12px;
+    background: #ddf2e3;
     font-family: '\65B0\5B8B\4F53', '\5B8B\4F53', Verdana;
 }
 
